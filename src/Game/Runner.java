@@ -2,7 +2,7 @@ package Game;
 
 import Rooms.Tile;
 import Saiyan.Goku;
-
+import Board.Board;
 import java.util.Scanner;
 
     public class Runner {
