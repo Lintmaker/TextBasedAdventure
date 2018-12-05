@@ -42,4 +42,3 @@ public class Tile implements BasicFunction
         return true;
     }
 }
-s
