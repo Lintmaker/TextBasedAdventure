@@ -47,10 +47,11 @@ import java.util.Scanner;
                 {
                     System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
                 }
-                else {
+                else
+                    {
                     System.out.println("Please choose a valid move.");
-                      }
-
+                    }
+                    Snake.printBoard();
 
             }
             in.close();
