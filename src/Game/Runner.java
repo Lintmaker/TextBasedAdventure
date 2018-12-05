@@ -1,6 +1,7 @@
 package Game;
 
 import Rooms.Tile;
+import Rooms.Wall;
 import Saiyan.Goku;
 import Board.Board;
 import java.util.Scanner;
@@ -30,23 +31,25 @@ import java.util.Scanner;
             int l = (int)(Math.random()*building.length-1);
             //building[x][y] = new WinningRoom(x, y);
             //building [i][l] = new DeathRoom(x,y);
+            building [x] [y] = new Wall (x,y);
 
             //Setup player 1 and the input scanner
             Goku player1 = new Goku("FirstName", "FamilyName", 0,0) ;
             building[0][0].enterRoom(player1);
+            Board Snake = new Board (building); // the building was already made above by the constructor.
+            Snake.printBoard();
             Scanner in = new Scanner(System.in);
             while(gameOn)
             {
                 System.out.println("Where would you like to move? (Choose N, S, E, W)");
                 String move = in.nextLine();
-                if(validMove(move, player1, building))
+                if(validMove(move, player1, Snake.getBoard()))
                 {
                     System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-
                 }
                 else {
                     System.out.println("Please choose a valid move.");
-                }
+                      }
 
 
             }
@@ -71,7 +74,7 @@ import java.util.Scanner;
                         map[p.getxLoc()-1][p.getyLoc()].enterRoom(p);
                         return true;
                     }
-                    else
+                    else //Make it always false when x and y loc = wall
                     {
                         return false;
                     }

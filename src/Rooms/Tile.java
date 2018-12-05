@@ -32,4 +32,8 @@ public class Tile
         occupant = null;
     }
 
+    @Override
+    public String toString() {
+        return "[]";
+    }
 }
