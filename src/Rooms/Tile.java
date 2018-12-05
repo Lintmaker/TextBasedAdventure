@@ -1,6 +1,6 @@
 package Rooms;
 import Saiyan.Goku;
-public class Tile
+public class Tile implements BasicFunction
 {
     Goku occupant;
     int xLoc,yLoc;
@@ -35,5 +35,10 @@ public class Tile
     @Override
     public String toString() {
         return "[]";
+    }
+    @Override
+    public boolean invalidMove()
+    {
+        return true;
     }
 }

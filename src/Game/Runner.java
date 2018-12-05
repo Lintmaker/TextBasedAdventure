@@ -69,7 +69,7 @@ import java.util.Scanner;
             move = move.toLowerCase().trim();
             switch (move) {
                 case "n":
-                    if (p.getxLoc() > 0)
+                    if (p.getxLoc() > 0 && map[p.getxLoc()-1][p.getyLoc()].invalidMove())
                     {
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc()-1][p.getyLoc()].enterRoom(p);
@@ -80,7 +80,7 @@ import java.util.Scanner;
                         return false;
                     }
                 case "e":
-                    if (p.getyLoc()< map[p.getyLoc()].length -1)
+                    if (p.getyLoc()< map[p.getyLoc()].length -1 && map[p.getxLoc()][p.getyLoc() + 1].invalidMove())
                     {
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc()][p.getyLoc() + 1].enterRoom(p);
@@ -92,7 +92,7 @@ import java.util.Scanner;
                     }
 
                 case "s":
-                    if (p.getxLoc() < map.length - 1)
+                    if (p.getxLoc() < map.length - 1 && map[p.getxLoc()+1][p.getyLoc()].invalidMove())
                     {
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc()+1][p.getyLoc()].enterRoom(p);
@@ -104,7 +104,7 @@ import java.util.Scanner;
                     }
 
                 case "w":
-                    if (p.getyLoc() > 0)
+                    if (p.getyLoc() > 0 && map[p.getxLoc()][p.getyLoc()-1].invalidMove())
                     {
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc()][p.getyLoc()-1].enterRoom(p);

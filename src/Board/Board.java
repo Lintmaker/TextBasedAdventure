@@ -1,9 +1,10 @@
 package Board;
 
-import Rooms.Tile;
 
-public class Board implements BasicFunction
-{
+import Rooms.Tile;
+import Rooms.Wall;
+public class Board
+    {
  private Tile [][] Board;
 
  public Board (Tile [] [] Board)
@@ -47,10 +48,9 @@ public class Board implements BasicFunction
     {
         return Board;
     }
-
-    @Override
-    public String toString()
+    public void edit(Tile [] [] Spike, int row, int column)
     {
-         return "";
+
     }
+
 }
