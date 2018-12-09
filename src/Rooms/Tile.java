@@ -34,7 +34,7 @@ public class Tile implements BasicFunction
 
     @Override
     public String toString() {
-        return "[]";
+        return "[ ]";
     }
     @Override
     public boolean invalidMove()

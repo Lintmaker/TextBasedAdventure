@@ -31,11 +31,22 @@ import java.util.Scanner;
             int l = (int)(Math.random()*building.length-1);
             //building[x][y] = new WinningRoom(x, y);
             //building [i][l] = new DeathRoom(x,y);
-            building [x] [y] = new Wall (x,y);
-
+            building [0] [4] = new Wall (0,4);
+            building [0] [0] = new Wall (0,0);
+            building [0] [1] = new Wall (0,0);
+            building [0] [2] = new Wall (0,0);
+            building [1] [0] = new Wall (1,0);
+            building [2] [0] = new Wall (2,0);
+            building [2] [1] = new Wall (2,1);
+            building [2] [2] = new Wall (2,2);
+            building [2] [3] = new Wall (2,3);
+            building [4] [4] = new Wall (4,4);
+            building [4] [1] = new Wall (4,1);
+            building [4] [2] = new Wall (4,2);
+            building [4] [3] = new Wall (4,3);
             //Setup player 1 and the input scanner
-            Goku player1 = new Goku("FirstName", "FamilyName", 0,0) ;
-            building[0][0].enterRoom(player1);
+            Goku player1 = new Goku("FirstName", "FamilyName", 4,0) ;
+            building[4][0].enterRoom(player1);
             Board Snake = new Board (building); // the building was already made above by the constructor.
             Snake.printBoard();
             Scanner in = new Scanner(System.in);
@@ -45,13 +56,14 @@ import java.util.Scanner;
                 String move = in.nextLine();
                 if(validMove(move, player1, Snake.getBoard()))
                 {
+                    Snake.printBoard();
                     System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
                 }
                 else
                     {
-                    System.out.println("Please choose a valid move.");
+                        Snake.printBoard();
+                        System.out.println("Please choose a valid move.");
                     }
-                    Snake.printBoard();
 
             }
             in.close();

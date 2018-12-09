@@ -9,7 +9,7 @@ public class Wall extends Tile implements BasicFunction
     }
     public String toString()
     {
-        return "-";
+        return "[X]";
     }
     @Override
     public boolean invalidMove()
