@@ -1,7 +1,11 @@
 package Game;
+import Board.Board;
 import Rooms.BasicFunction;
 import Saiyan.Goku;
 import Rooms.Tile;
+import Game.Runner;
+
+import java.util.Scanner;
 
 public class TrapTile extends Tile implements BasicFunction
 {
@@ -27,8 +31,11 @@ public class TrapTile extends Tile implements BasicFunction
     @Override
     public void enterRoom(Goku x)
     {
-        System.out.println("Welcome to HIFL, You need to find the right tile to escape");
+        System.out.println("Welcome to HIFL, You need to pay homage to Konami to escape.");
+        Scanner Konami = new Scanner(System.in);
+
     }
+    public boolean isTrap() {return true;}
 }
 
 

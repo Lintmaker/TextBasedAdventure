@@ -33,7 +33,11 @@ public class Tile implements BasicFunction
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
+        if (occupant != null) {
+            return "[G]";
+        }
         return "[ ]";
     }
     @Override

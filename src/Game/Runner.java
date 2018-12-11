@@ -5,8 +5,9 @@ import Rooms.Wall;
 import Saiyan.Goku;
 import Board.Board;
 import java.util.Scanner;
-
-    public class Runner {
+import static Game.TrapTile.TrapCounter;
+import Game.TrapTile;
+public class Runner {
 
 
         private static boolean gameOn = true;
@@ -14,7 +15,7 @@ import java.util.Scanner;
         public static void main(String[] args)
         {
             Tile[][] building = new Tile[5][5];
-
+            Tile[][] HiflBoard= new Tile [5][5];
             //Fill the building with normal rooms
             for (int x = 0; x < building.length; x++)
             {
@@ -25,10 +26,17 @@ import java.util.Scanner;
             }
 
             //Create a random winning room.
-            int x = (int)(Math.random()*building.length);
-            int y = (int)(Math.random()*building.length);
+            //int x = (int)(Math.random()*building.length);
+            //int y = (int)(Math.random()*building.length);
             int i = (int)(Math.random()*building.length-1);
             int l = (int)(Math.random()*building.length-1);
+            for (int z = 0; z < TrapCounter(); z++ )
+            {
+                int x = (int)(Math.random()*building.length);
+                int y = (int)(Math.random()*building.length);
+                building [x] [y] = new TrapTile(x,y);
+
+            }
             //building[x][y] = new WinningRoom(x, y);
             //building [i][l] = new DeathRoom(x,y);
             building [0] [4] = new Wall (0,4);
