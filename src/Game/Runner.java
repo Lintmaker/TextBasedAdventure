@@ -14,67 +14,103 @@ public class Runner {
 
         public static void main(String[] args)
         {
-            Tile[][] building = new Tile[5][5];
-            Tile[][] HiflBoard= new Tile [5][5];
-            //Fill the building with normal rooms
-            for (int x = 0; x < building.length; x++)
-            {
-                for (int y = 0; y < building[x].length; y++)
-                {
-                    building[x][y] = new Tile(x,y) ;
-                }
-            }
+           Scanner Difficulty = new Scanner (System.in);
+           String miles = Difficulty.nextLine();
+           if (miles.equals("100 mile"))
+           {
+               Tile[][] building = new Tile[5][5];
+               //Fill the building with normal rooms
+               for (int x = 0; x < building.length; x++) {
+                   for (int y = 0; y < building[x].length; y++) {
+                       building[x][y] = new Tile(x, y);
+                   }
+               }
 
-            //Create a random winning room.
-            //int x = (int)(Math.random()*building.length);
-            //int y = (int)(Math.random()*building.length);
-            int i = (int)(Math.random()*building.length-1);
-            int l = (int)(Math.random()*building.length-1);
-            for (int z = 0; z < TrapCounter(); z++ )
-            {
-                int x = (int)(Math.random()*building.length);
-                int y = (int)(Math.random()*building.length);
-                building [x] [y] = new TrapTile(x,y);
+               //Create a random winning room.
+               //int x = (int)(Math.random()*building.length);
+               //int y = (int)(Math.random()*building.length);
+               int i = (int) (Math.random() * building.length - 1);
+               int l = (int) (Math.random() * building.length - 1);
+               for (int z = 0; z < TrapCounter(); z++) {
+                   int x = (int) (Math.random() * building.length);
+                   int y = (int) (Math.random() * building.length);
+                   building[x][y] = new TrapTile(x, y);
 
-            }
-            //building[x][y] = new WinningRoom(x, y);
-            //building [i][l] = new DeathRoom(x,y);
-            building [0] [4] = new Wall (0,4);
-            building [0] [0] = new Wall (0,0);
-            building [0] [1] = new Wall (0,0);
-            building [0] [2] = new Wall (0,0);
-            building [1] [0] = new Wall (1,0);
-            building [2] [0] = new Wall (2,0);
-            building [2] [1] = new Wall (2,1);
-            building [2] [2] = new Wall (2,2);
-            building [2] [3] = new Wall (2,3);
-            building [4] [4] = new Wall (4,4);
-            building [4] [1] = new Wall (4,1);
-            building [4] [2] = new Wall (4,2);
-            building [4] [3] = new Wall (4,3);
-            //Setup player 1 and the input scanner
-            Goku player1 = new Goku("FirstName", "FamilyName", 4,0) ;
-            building[4][0].enterRoom(player1);
-            Board Snake = new Board (building); // the building was already made above by the constructor.
-            Snake.printBoard();
-            Scanner in = new Scanner(System.in);
-            while(gameOn)
-            {
-                System.out.println("Where would you like to move? (Choose N, S, E, W)");
-                String move = in.nextLine();
-                if(validMove(move, player1, Snake.getBoard()))
-                {
-                    Snake.printBoard();
-                    System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-                }
-                else
-                    {
-                        Snake.printBoard();
-                        System.out.println("Please choose a valid move.");
-                    }
+               }
+               //building[x][y] = new WinningRoom(x, y);
+               //building [i][l] = new DeathRoom(x,y);
+               building[0][4] = new Wall(0, 4);
+               building[0][0] = new Wall(0, 0);
+               building[0][1] = new Wall(0, 0);
+               building[0][2] = new Wall(0, 0);
+               building[1][0] = new Wall(1, 0);
+               building[2][0] = new Wall(2, 0);
+               building[2][1] = new Wall(2, 1);
+               building[2][2] = new Wall(2, 2);
+               building[2][3] = new Wall(2, 3);
+               building[4][4] = new Wall(4, 4);
+               building[4][1] = new Wall(4, 1);
+               building[4][2] = new Wall(4, 2);
+               building[4][3] = new Wall(4, 3);
+               //Setup player 1 and the input scanner
+               Goku player1 = new Goku("FirstName", "FamilyName", 4, 0);
+               building[4][0].enterRoom(player1);
+               Board Snake = new Board(building); // the building was already made above by the constructor.
+               Snake.printBoard();
+               Scanner in = new Scanner(System.in);
+               while (gameOn) {
+                   System.out.println("Where would you like to move? (Choose N, S, E, W)");
+                   String move = in.nextLine();
+                   if (validMove(move, player1, Snake.getBoard())) {
+                       Snake.printBoard();
+                       System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+                   } else {
+                       Snake.printBoard();
+                       System.out.println("Please choose a valid move.");
+                   }
 
-            }
-            in.close();
+               }
+               in.close();
+           }
+           else if( miles.equals("1000 mile"))
+           {
+               Tile[][] HiflBoard = new Tile[7][7];
+               for (int x = 0; x < HiflBoard .length; x++)
+               {
+                   for (int y = 0; y < HiflBoard [x].length; y++)
+                   {
+                       HiflBoard [x][y] = new Tile(x, y);
+                   }
+               }
+               int i = (int) (Math.random() * HiflBoard.length - 1);
+               int l = (int) (Math.random() * HiflBoard.length - 1);
+               for (int z = 0; z < TrapCounter()+1; z++)
+               {
+                   int x = (int) (Math.random() * HiflBoard.length);
+                   int y = (int) (Math.random() * HiflBoard.length);
+                   HiflBoard[x][y] = new TrapTile(x, y);
+
+               }
+               Goku player1 = new Goku("FirstName", "FamilyName", 0, 0);
+               HiflBoard [6][6].enterRoom(player1);
+               Board Snake = new Board(HiflBoard); // the building was already made above by the constructor.
+               Snake.printBoard();
+               Scanner in = new Scanner(System.in);
+               while (gameOn) {
+                   System.out.println("Where would you like to move? (Choose N, S, E, W)");
+                   String move = in.nextLine();
+                   if (validMove(move, player1, Snake.getBoard()))
+                   {
+                       Snake.printBoard();
+                       System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+                   } else {
+                       Snake.printBoard();
+                       System.out.println("Please choose a valid move.");
+                   }
+
+               }
+               in.close();
+           }
         }
 
         /**
@@ -144,8 +180,6 @@ public class Runner {
         {
             gameOn = false;
         }
-
-
 
     }
 
