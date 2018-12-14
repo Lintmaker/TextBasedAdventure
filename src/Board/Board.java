@@ -5,25 +5,28 @@ import Rooms.Tile;
 import Rooms.Wall;
 public class Board
     {
- private Tile [][] Board;
+        private int length;
+        private int width;
+     private Tile [][] Board;
 
- public Board (Tile [] [] Board)
+    public Board (Tile [] [] Board)
  {
      this.Board = Board;
  }
-    public void fill ()
-    {
-        String play = "";
-        for(int i = 0; i < Board.length; i++)
+        public void fill ()
         {
-            for( int x = 0; x < Board[i].length; x++)
+            String play = "";
+            for(int i = 0; i < Board.length; i++)
             {
-                play += Board[i][x];
-                System.out.println(play);
+                for( int x = 0; x < Board[i].length; x++)
+                {
+                    play += Board[i][x];
+                    System.out.println(play);
+                }
             }
+
         }
 
-    }
     public void printBoard()
     {
      String parts = "";
@@ -37,20 +40,11 @@ public class Board
          System.out.println(parts + "\n");
      }
     }
-/*
-    public void edit(Tile [] [] Spike ( int row, int column))
-    {
-        Wall[row][column] = Wall;
-    }
 
- */
     public Tile[][] getBoard()
     {
         return Board;
     }
-    public void edit(Tile [] [] Spike, int row, int column)
-    {
 
-    }
 
 }

@@ -4,11 +4,15 @@ public class Tile implements BasicFunction
 {
     Goku occupant;
     int xLoc,yLoc;
-
+    private int count;
     public Tile(int x, int y)
     {
         xLoc = x;
         yLoc = y;
+    }
+    public Tile (int count)
+    {
+        this.count = count;
     }
 
     /**

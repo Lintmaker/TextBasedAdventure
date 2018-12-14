@@ -14,26 +14,53 @@ public class TrapTile extends Tile implements BasicFunction
     {
         super(x, y);
     }
+    public TrapTile (int count)
+    {
+        super(count);
+    }
     public String toString()
     {
         return "[ ]";
     }
+
    public static int TrapCounter()
    {
        return 5;
    }
+
     @Override
     public boolean invalidMove()
     {
         return true;
     }
 
+  public static void KonamiCode()
+  {
+      String code = "";
+      int correct = 5;
+      Scanner Konami = new Scanner(System.in);
+      code = Konami.nextLine();
+      for (int z = 0; z < correct; z++)
+      {
+          if (code.equals("up up down down left right left right b a start")) {
+              correct = z;
+              System.out.println("Nice job, now you can go.");
+          }
+          else
+          correct += correct;
+          System.out.println("I want the whole code at once with spaces fool.");
+      }
+  }
     @Override
     public void enterRoom(Goku x)
     {
-        System.out.println("Welcome to HIFL, You need to pay homage to Konami to escape.");
-        Scanner Konami = new Scanner(System.in);
 
+        System.out.println("Welcome to HIFL, You need to pay homage to Konami to escape.");
+        TrapTile.KonamiCode();
+    }
+    public void leaveRoom(Goku x)
+    {
+        occupant = null;
     }
     public boolean isTrap() {return true;}
 }
