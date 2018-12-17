@@ -18,10 +18,6 @@ public class TrapTile extends Tile implements BasicFunction
     {
         super(count);
     }
-    public String toString()
-    {
-        return "[ ]";
-    }
 
    public static int TrapCounter()
    {
@@ -42,13 +38,15 @@ public class TrapTile extends Tile implements BasicFunction
       code = Konami.nextLine();
       for (int z = 0; z < correct; z++)
       {
-          if (code.equals("up up down down left right left right b a start")) {
-              correct = z;
-              System.out.println("Nice job, now you can go.");
+          if (!code.equals("up up down down left right left right b a start")) {
+              correct += correct;
+              System.out.println("I want the whole code at once with spaces fool.");
           }
           else
-          correct += correct;
-          System.out.println("I want the whole code at once with spaces fool.");
+          {
+              z= correct;
+          }
+
       }
   }
     @Override
@@ -63,6 +61,14 @@ public class TrapTile extends Tile implements BasicFunction
         occupant = null;
     }
     public boolean isTrap() {return true;}
+    public String toString()
+    {
+        if (occupant != null)
+        {
+            return "[G]";
+        }
+        return "[ ]";
+    }
 }
 
 
