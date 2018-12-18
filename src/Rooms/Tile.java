@@ -1,18 +1,19 @@
+//Author Lin Yao Pan
 package Rooms;
 import Saiyan.Goku;
+/*
+ * Creates the tile format to initialize and set up the rest of the game
+ * @param Tile class, makes a tile to move into for the whole board
+ * prints rooms to use
+ */
 public class Tile implements BasicFunction
 {
     Goku occupant;
     int xLoc,yLoc;
-    private int count;
     public Tile(int x, int y)
     {
         xLoc = x;
         yLoc = y;
-    }
-    public Tile (int count)
-    {
-        this.count = count;
     }
 
     /**

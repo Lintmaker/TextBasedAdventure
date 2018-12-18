@@ -1,5 +1,10 @@
+//Author Lin Yao Pan
 package Saiyan;
-
+/*
+ * Creates who will be entering and exiting rooms based on locaton
+ * @param Goku class, Tells the position of the character and is used in other classes
+ * Sets up who is moving where.
+ */
 public class Goku
 {
         String firstName;
