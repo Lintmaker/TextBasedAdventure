@@ -20,7 +20,7 @@ public class FinalTile extends Tile implements BasicFunction
     @Override
     public boolean invalidMove()
     {
-        return false;
+        return true;
     }
 
     @Override

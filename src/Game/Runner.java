@@ -10,165 +10,167 @@ public class Runner {
 
         public static void main(String[] args)
         {
+            Board map = new Board(0,0);
+            int length = 0;
+            int width = 0;
             System.out.println("You've been killed by Raditz. \n" +
                     " The Dragonballs were used to transport you to any part of Snake Way to train with King Kai for the Saiyan threat coming to Earth. \n " +
-                    "Would you like to have 100 mile, 1000 mile or the million mile?");
+                    "Would you like to have 100, 1000 or the million mile?");
            Scanner Difficulty = new Scanner (System.in);
            String miles = Difficulty.nextLine();
-           if (miles.equals("100 mile"))
-           {
-
-               Tile[][] building = new Tile[5][5];
-               //Fill the building with normal tiles
-               for (int x = 0; x < building.length; x++) {
-                   for (int y = 0; y < building[x].length; y++) {
-                       building[x][y] = new Tile(x, y);
+           if (miles.equals("100")) {
+               map = new Board(miles);
+               length = map.getLength();
+               width = map.getWidth();
+               //Fill the map with normal tiles
+               for (int x = 0; x < map.getBoard().length; x++) {
+                   for (int y = 0; y < map.getBoard()[x].length; y++) {
+                       map.getBoard()[x][y] = new Tile(x, y);
                    }
                }
-               building [1][1] = new PrincessSnakeFillerRoom(1,1) ;
-               building[0][4] = new Wall(0, 4);
-               building[0][0] = new Wall(0, 0);
-               building[0][1] = new Wall(0, 0);
-               building[0][2] = new Wall(0, 0);
-               building[1][0] = new Wall(1, 0);
-               building[2][0] = new Wall(2, 0);
-               building[2][1] = new Wall(2, 1);
-               building[2][2] = new Wall(2, 2);
-               building[2][3] = new Wall(2, 3);
-               building[4][4] = new Wall(4, 4);
-               building[4][1] = new Wall(4, 1);
-               building[4][2] = new Wall(4, 2);
-               building[4][3] = new Wall(4, 3);
-               building[4][0] = new TrapTile(4, 0) ;
-               building[0][3] = new FinalTile(0,3);
+               map.getBoard()[2][0] = new PrincessSnakeFillerRoom(2, 0);
+               map.getBoard()[0][4] = new Wall(0, 4);
+               map.getBoard()[0][0] = new Wall(0, 0);
+               map.getBoard()[0][1] = new Wall(0, 0);
+               map.getBoard()[0][2] = new Wall(0, 0);
+               map.getBoard()[1][0] = new Wall(1, 0);
+               map.getBoard()[2][1] = new Wall(2, 1);
+               map.getBoard()[2][2] = new Wall(2, 2);
+               map.getBoard()[2][3] = new Wall(2, 3);
+               map.getBoard()[4][4] = new Wall(4, 4);
+               map.getBoard()[4][1] = new Wall(4, 1);
+               map.getBoard()[4][2] = new Wall(4, 2);
+               map.getBoard()[3][5] = new Wall(3, 5);
+               map.getBoard()[0][5] = new Wall(0, 5);
+               map.getBoard()[1][5] = new Wall(1, 5);
+               map.getBoard()[2][5] = new Wall(2, 5);
+               map.getBoard()[4][5] = new Wall(4, 5);
+               map.getBoard()[5][5] = new Wall(5, 5);
+               map.getBoard()[4][0] = new TrapTile(4, 0);
+               map.getBoard()[0][3] = new FinalTile(0, 3);
                //Setup player 1 and the input scanner
                Goku player1 = new Goku("FirstName", "FamilyName", 4, 0);
-               building[4][0].enterRoom(player1);
-               Board Snake = new Board(building); // the building was already made above by the constructor.
-               Snake.printBoard();
+               map.getBoard()[4][0].enterRoom(player1);
+               map.print();
                Scanner in = new Scanner(System.in);
                while (gameOn) {
                    System.out.println("Where would you like to move? (Choose N, S, E, W) \n" +
                            "If you want help, choose H");
                    String move = in.nextLine();
-                   if (validMove(move, player1, Snake.getBoard())) {
-                       Snake.printBoard();
+                   if (validMove(move, player1, map.getBoard())) {
+                       map.print();
                        System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
                    } else {
-                       Snake.printBoard();
+                       map.print();
                        System.out.println("Please choose a valid move.");
                    }
 
                }
                in.close();
            }
-
-           else if( miles.equals("1000 mile"))
-           {
-               Tile[][] HiflBoard = new Tile[6][6];
-               for (int x = 0; x < HiflBoard .length; x++)
-               {
-                   for (int y = 0; y < HiflBoard [x].length; y++)
-                   {
-                       HiflBoard [x][y] = new Tile(x, y);
+            else if (miles.equals("1000"))
+            {
+                map = new Board(miles);
+                length = map.getLength();
+                width = map.getWidth();
+               for (int x = 0; x < map.getBoard().length; x++) {
+                   for (int y = 0; y < map.getBoard()[x].length; y++) {
+                       map.getBoard()[x][y] = new Tile(x, y);
                    }
                }
-               HiflBoard [5][0] = new Wall(5, 0);
-               HiflBoard [5][1] = new Wall(5, 1);
-               HiflBoard [5][2] = new Wall(5, 2);
-               HiflBoard [5][3] = new Wall(5, 3);
-               HiflBoard [5][4] = new Wall(5, 4);
-               HiflBoard [4][0] = new Wall(4, 0);
-               HiflBoard [4][1] = new Wall(4, 1);
-               HiflBoard [4][2] = new Wall(4, 2);
-               HiflBoard [4][3] = new Wall(4, 3);
-               HiflBoard [4][4] = new Wall(4, 4);
-               HiflBoard [3][0] = new Wall(3, 0);
-               HiflBoard [3][1] = new Wall(3, 1);
-               HiflBoard [3][2] = new Wall(3, 2);
-               HiflBoard [2][5] = new Wall(2, 5);
-               HiflBoard [2][4] = new Wall(2, 4);
-               HiflBoard [0][0] = new Wall(0, 0);
-               HiflBoard [0][1] = new Wall(0, 1);
-               HiflBoard [1][0] = new Wall(1, 0);
-               HiflBoard [1][1] = new Wall(1, 1);
-               HiflBoard [1][4] = new Wall(1, 4);
-               HiflBoard [1][3] = new Wall(1, 3);
-               HiflBoard [1][5] = new Wall(1, 5);
-               HiflBoard [5][5] = new TrapTile(5, 5);
-               HiflBoard [2][0] = new PrincessSnakeFillerRoom(2, 0);
+               map.getBoard()[5][0] = new Wall(5, 0);
+               map.getBoard()[5][1] = new Wall(5, 1);
+               map.getBoard()[5][2] = new Wall(5, 2);
+               map.getBoard()[5][3] = new Wall(5, 3);
+               map.getBoard()[5][4] = new Wall(5, 4);
+               map.getBoard()[4][0] = new Wall(4, 0);
+               map.getBoard()[4][1] = new Wall(4, 1);
+               map.getBoard()[4][2] = new Wall(4, 2);
+               map.getBoard()[4][3] = new Wall(4, 3);
+               map.getBoard()[4][4] = new Wall(4, 4);
+               map.getBoard()[3][0] = new Wall(3, 0);
+               map.getBoard()[3][1] = new Wall(3, 1);
+               map.getBoard()[3][2] = new Wall(3, 2);
+               map.getBoard()[2][5] = new Wall(2, 5);
+               map.getBoard()[2][4] = new Wall(2, 4);
+               map.getBoard()[0][0] = new Wall(0, 0);
+               map.getBoard()[0][1] = new Wall(0, 1);
+               map.getBoard()[1][0] = new Wall(1, 0);
+               map.getBoard()[1][1] = new Wall(1, 1);
+               map.getBoard()[1][4] = new Wall(1, 4);
+               map.getBoard()[1][3] = new Wall(1, 3);
+               map.getBoard()[1][5] = new Wall(1, 5);
+               map.getBoard()[5][5] = new TrapTile(5, 5);
+               map.getBoard()[2][0] = new PrincessSnakeFillerRoom(2, 0);
+               map.getBoard()[0][5] = new FinalTile(0, 5);
                Goku player1 = new Goku("FirstName", "FamilyName", 5, 5);
-               HiflBoard [5][5].enterRoom(player1);
-               Board Snake = new Board(HiflBoard); // the building was already made above by the constructor.
-               Snake.printBoard();
-               Scanner in = new Scanner(System.in);
-
-               while (gameOn) {
-                   System.out.println("Where would you like to move? (Choose N, S, E, W) \n" +
-                           "If you want help, choose H." );
-                   String move = in.nextLine();
-                   if (validMove(move, player1, Snake.getBoard()))
-                   {
-                       Snake.printBoard();
-                       System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-                   } else {
-                       Snake.printBoard();
-                       System.out.println("Please choose a valid move.");
-                   }
-
-               }
-               in.close();
-           }
-           else
-           {
-               Tile[][] HiflBoard = new Tile[6][6];
-               for (int x = 0; x < HiflBoard.length; x++)
-               {
-                   for (int y = 0; y < HiflBoard[x].length; y++)
-                   {
-                       HiflBoard [x][y] = new Tile(x, y);
-                   }
-               }
-
-               HiflBoard [5][0] = new Wall(5, 0);
-               HiflBoard [5][1] = new Wall(5, 1);
-               HiflBoard [5][2] = new Wall(5, 2);
-               HiflBoard [5][3] = new Wall(5, 3);
-               HiflBoard [5][4] = new Wall(5, 4);
-               HiflBoard [3][1] = new Wall(3, 1);
-               HiflBoard [3][2] = new Wall(3, 2);
-               HiflBoard [3][3] = new Wall(3, 3);
-               HiflBoard [3][4] = new Wall(3, 4);
-               HiflBoard [1][0] = new Wall(1, 0);
-               HiflBoard [1][1] = new Wall(1, 1);
-               HiflBoard [1][2] = new Wall(1, 2);
-               HiflBoard [1][3] = new Wall(1, 3);
-               HiflBoard [0][5] = new Wall(0, 2);
-               HiflBoard [1][5] = new Wall(0, 3);
-               HiflBoard [2][0] = new PrincessSnakeFillerRoom(2, 0);
-               HiflBoard [5][5] = new TrapTile(5, 5);
-               Goku player1 = new Goku("FirstName", "FamilyName", 5, 5);
-               HiflBoard [5][5].enterRoom(player1);
-               Board Snake = new Board(HiflBoard); // the building was already made above by the constructor.
-               Snake.printBoard();
+               map.getBoard()[5][5].enterRoom(player1);
+               map.print();
                Scanner in = new Scanner(System.in);
 
                while (gameOn) {
                    System.out.println("Where would you like to move? (Choose N, S, E, W) \n" +
                            "If you want help, choose H.");
                    String move = in.nextLine();
-                   if (validMove(move, player1, Snake.getBoard()))
-                   {
-                       Snake.printBoard();
+                   if (validMove(move, player1, map.getBoard())) {
+                       map.print();
                        System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
                    } else {
-                       Snake.printBoard();
+                       map.print();
                        System.out.println("Please choose a valid move.");
                    }
 
                }
                in.close();
            }
+            else {
+               map = new Board(miles);
+               length = map.getLength();
+               width = map.getWidth();
+               for (int x = 0; x < map.getBoard().length; x++) {
+                   for (int y = 0; y < map.getBoard()[x].length; y++) {
+                       map.getBoard()[x][y] = new Tile(x, y);
+                   }
+               }
+               map.getBoard()[5][0] = new Wall(5, 0);
+               map.getBoard()[5][1] = new Wall(5, 1);
+               map.getBoard()[5][2] = new Wall(5, 2);
+               map.getBoard()[5][3] = new Wall(5, 3);
+               map.getBoard()[5][4] = new Wall(5, 4);
+               map.getBoard()[3][1] = new Wall(3, 1);
+               map.getBoard()[3][2] = new Wall(3, 2);
+               map.getBoard()[3][3] = new Wall(3, 3);
+               map.getBoard()[3][4] = new Wall(3, 4);
+               map.getBoard()[1][0] = new Wall(1, 0);
+               map.getBoard()[1][1] = new Wall(1, 1);
+               map.getBoard()[1][2] = new Wall(1, 2);
+               map.getBoard()[1][3] = new Wall(1, 3);
+               map.getBoard()[0][5] = new Wall(0, 2);
+               map.getBoard()[1][5] = new Wall(0, 3);
+               map.getBoard()[2][0] = new PrincessSnakeFillerRoom(2, 0);
+               map.getBoard()[5][5] = new TrapTile(5, 5);
+               map.getBoard()[0][0] = new FinalTile(0, 0);
+               Goku player1 = new Goku("FirstName", "FamilyName", 5, 5);
+               map.getBoard()[5][5].enterRoom(player1);
+               map.print();
+               Scanner in = new Scanner(System.in);
+
+               while (gameOn) {
+                   System.out.println("Where would you like to move? (Choose N, S, E, W) \n" +
+                           "If you want help, choose H.");
+                   String move = in.nextLine();
+                   if (validMove(move, player1, map.getBoard())) {
+                       map.print();
+                       System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+                   } else {
+                       map.print();
+                       System.out.println("Please choose a valid move.");
+                   }
+
+               }
+               in.close();
+           }
+
         }
 
         /**

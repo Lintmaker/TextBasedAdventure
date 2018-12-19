@@ -22,7 +22,7 @@ public class Tile implements BasicFunction
      */
     public void enterRoom(Goku x)
     {
-        System.out.println("You enter a plain old room");
+        System.out.println("You trudge forward: tile after tile.");
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
