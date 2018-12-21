@@ -18,7 +18,7 @@ public class Runner {
                     "Would you like to have 100, 1000 or the million mile?");
            Scanner Difficulty = new Scanner (System.in);
            String miles = Difficulty.nextLine();
-           if (miles.equals("100")) {
+           if (miles.equals("100") || (miles.equals("100 mile"))) {
                map = new Board(miles);
                length = map.getLength();
                width = map.getWidth();
@@ -68,7 +68,7 @@ public class Runner {
                }
                in.close();
            }
-            else if (miles.equals("1000"))
+            else if (miles.equals("1000") || miles.equals("1000 mile"))
             {
                 map = new Board(miles);
                 length = map.getLength();

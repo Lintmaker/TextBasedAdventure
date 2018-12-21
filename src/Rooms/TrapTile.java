@@ -44,7 +44,7 @@ public class TrapTile extends Tile implements BasicFunction
     public void enterRoom(Goku x)
     {
 
-        System.out.println("Welcome to HIFL, You must type in the Konami code without uppercase and with spaces after every input. ");
+        System.out.println("Welcome to HIFL, You must type in the whole Konami code in one line without uppercase. ");
         TrapTile.KonamiCode();
         System.out.println("Now you may start the game since I've taught you about another.");
     }
